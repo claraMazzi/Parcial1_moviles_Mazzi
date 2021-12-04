@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Parcial1_moviles</string>
+    <string name="auto">Auto</string>
+    <string name="moto">Moto</string>
+    <string name="publish">Guardar datos</string>
+
+</resources>
