@@ -21,6 +21,7 @@ public class MyDatabaseActions extends MyDatabaseHelper{
 
     public void insertarDatos(String modelo, String tipo){
             long id = 0;
+            System.out.println("modelo " + modelo + "tipo "+ tipo);
             try{
                 MyDatabaseHelper dbHelper = new MyDatabaseHelper(context);
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -50,13 +51,17 @@ public class MyDatabaseActions extends MyDatabaseHelper{
         cursorTransporte = db.rawQuery("SELECT * FROM " + DB_NAME+ " ORDER BY tipo ASC", null);
 
         if (cursorTransporte.moveToFirst()) {
-            do {
-                transporte = new Transporte(cursorTransporte.getString(0), cursorTransporte.getString(1));
+            while (cursorTransporte.moveToNext()) {
+                System.out.println("cursor " + cursorTransporte);
+
+                transporte = new Transporte(cursorTransporte.getInt(0),cursorTransporte.getString(1), cursorTransporte.getString(2));
 
                 listaTransportes.add(transporte);
-            } while (cursorTransporte.moveToNext());
+            }
         }
         cursorTransporte.close();
+        System.out.println("lista " + listaTransportes);
+
 
         return listaTransportes;
     }

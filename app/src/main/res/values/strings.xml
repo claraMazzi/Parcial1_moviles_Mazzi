@@ -3,5 +3,6 @@
     <string name="auto">Auto</string>
     <string name="moto">Moto</string>
     <string name="publish">Guardar datos</string>
+    <string name="show">Mostrar datos</string>
 
 </resources>

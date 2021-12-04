@@ -1,8 +1,11 @@
 package com.example.parcial1_moviles;
 
+import static android.R.layout.simple_list_item_1;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mostrarDatos;
     private String tipoElegido;
     private ListView myListView;
-
+    ArrayList<Transporte> listaTransportes = new ArrayList<Transporte>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +44,28 @@ public class MainActivity extends AppCompatActivity {
         guardarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  actions.insertarDatos(modelo.toString(), tipoElegido);
+                    System.out.println("ACAAAA1" + modelo.getText().toString());
+                  actions.insertarDatos(modelo.getText().toString(), tipoElegido);
+                  System.out.println("ACAAAA23");
             }
         });
 
         mostrarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   ArrayList<Transporte> listaTransportes = new ArrayList<Transporte>();
-                   listaTransportes = actions.mostrarDatos();
+                listaTransportes = actions.mostrarDatos();
             }
         });
+        listaTransportes = actions.mostrarDatos();
+        System.out.println(listaTransportes.toString());
+
+        if (listaTransportes!=null){
+            ArrayAdapter<Transporte> arrayAdapter = new ArrayAdapter<Transporte>(
+                    this,
+                    R.layout.listview,
+                    listaTransportes);
+            myListView.setAdapter(arrayAdapter);
+        }
     }
 
     public void onRadioButtonClicked(View view) {

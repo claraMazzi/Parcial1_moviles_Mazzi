@@ -62,13 +62,16 @@
                 android:id="@+id/buttonMostrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/publish"
+                android:text="@string/show"
                 style="@style/button"/>
 
             <ListView
                 android:id="@+id/myListView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/teal_700"
+                android:minHeight="200pt"
+                />
 
         </LinearLayout>
     </ScrollView>
